@@ -1,0 +1,36 @@
+﻿@page
+@model NoteBook.Pages.Weathers.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Weather[0].WeatherId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Weather) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WeatherId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.WeatherPic">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.WeatherPic">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.WeatherPic">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

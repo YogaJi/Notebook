@@ -1,0 +1,72 @@
+﻿@page
+@model NoteBook.Pages.Journals.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].BackgroundColor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].Content)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].NotebookId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].PrimaryWeather)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Journal[0].PrimaryMood)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Journal) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BackgroundColor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NotebookId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryWeather.WeatherPic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimaryMood.MoodPic)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.JournalId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.JournalId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.JournalId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

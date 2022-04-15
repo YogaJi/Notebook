@@ -1,0 +1,39 @@
+﻿@page
+@model NoteBook.Pages.Weathers.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Weather</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Weather.WeatherId" class="control-label"></label>
+                <input asp-for="Weather.WeatherId" class="form-control" />
+                <span asp-validation-for="Weather.WeatherId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Weather.WeatherPic" class="control-label"></label>
+                <input asp-for="Weather.WeatherPic" class="form-control" />
+                <span asp-validation-for="Weather.WeatherPic" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
