@@ -18,31 +18,22 @@ namespace NoteBook.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
-        public string BackgroundColor { get; set; }
+
+        public int ColorId { get; set; }
+        public Color color { get; set; }
+
         public string Content { get; set; }
 
         public int NotebookId { get; set; }
-        [ForeignKey("Notebook")]
+
         public Notebook notebook { get; set; }
 
 
-        [ForeignKey("PrimaryWeather")]
-        public string weather { get; set; }
-        public Weather PrimaryWeather { get; set; }
-
-
-        [ForeignKey("PrimaryMood")]
-        public string mood { get; set; }
-        public Mood PrimaryMood { get; set; }
-
-        /*        public int WeatherId { get; set; }
-        [ForeignKey("Weather")]
+        public int WeatherId { get; set; }
         public Weather weather { get; set; }
-              public int MoodId { get; set; }
-               [ForeignKey("Mood")]
-               public Mood mood { get; set; }*/
 
-
+        public int MoodId { get; set; }
+        public Mood mood { get; set; }
 
     }
 }

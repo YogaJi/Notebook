@@ -23,14 +23,14 @@ namespace NoteBook.Pages.Moods
         [BindProperty]
         public Mood Mood { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Mood = await _context.Mood.FirstOrDefaultAsync(m => m.MoodPic == id);
+            Mood = await _context.Mood.FirstOrDefaultAsync(m => m.MoodId == id);
 
             if (Mood == null)
             {
@@ -56,7 +56,7 @@ namespace NoteBook.Pages.Moods
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MoodExists(Mood.MoodPic))
+                if (!MoodExists(Mood.MoodId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace NoteBook.Pages.Moods
             return RedirectToPage("./Index");
         }
 
-        private bool MoodExists(string id)
+        private bool MoodExists(int id)
         {
-            return _context.Mood.Any(e => e.MoodPic == id);
+            return _context.Mood.Any(e => e.MoodId == id);
         }
     }
 }

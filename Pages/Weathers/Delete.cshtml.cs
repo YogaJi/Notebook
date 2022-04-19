@@ -22,14 +22,14 @@ namespace NoteBook.Pages.Weathers
         [BindProperty]
         public Weather Weather { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Weather = await _context.Weather.FirstOrDefaultAsync(m => m.WeatherPic == id);
+            Weather = await _context.Weather.FirstOrDefaultAsync(m => m.WeatherId == id);
 
             if (Weather == null)
             {
@@ -38,7 +38,7 @@ namespace NoteBook.Pages.Weathers
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string id)
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
             if (id == null)
             {

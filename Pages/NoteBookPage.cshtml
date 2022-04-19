@@ -1,0 +1,45 @@
+﻿@page
+@using NoteBook.Models
+@model NoteBook.Pages.NoteBookPageModel
+@{
+}
+<head>
+    <link rel="stylesheet" href="~/css/main.css" />
+</head>
+<h1>@Model.Notebook.Name</h1>
+
+<ul>
+    <li>
+        <a asp-page="Journals/Create" asp-route-id="@Model.Notebook.NotebookId">Create new Dairy</a>
+ 
+    </li>
+    @foreach (Journal journal in Model.Notebook.Journals)
+    {
+        <li>
+            <a asp-page="Journals/Details" asp-route-id="@journal.JournalId">@journal.Title</a>
+            <p>@journal.Date.ToString("dd MMM yyyy")</p>
+        </li>
+    }
+
+</ul>
+
+@section Schema
+{
+    <script type="application/ld+json">
+        {
+            "@@context": "http://schema.org",
+            "@@type": "NoteBook",
+            "noteBookId": "@Model.Notebook.NotebookId",
+            "name": "@Model.Notebook.Name",
+ @*           @if (Model?.Journal?.Title != null)
+            {
+                @:"Journal": {
+                @:    "@@type": "Person",
+                @:    "title": "@Model.Journal.Title",
+                @:    "date": "@Model.Journal.Date",
+                @:}
+            }*@
+
+        }
+    </script>
+}

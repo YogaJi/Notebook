@@ -13,12 +13,17 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Weather.WeatherId" />
             <div class="form-group">
-                <label asp-for="Weather.WeatherId" class="control-label"></label>
-                <input asp-for="Weather.WeatherId" class="form-control" />
-                <span asp-validation-for="Weather.WeatherId" class="text-danger"></span>
+                <label asp-for="Weather.WeatherName" class="control-label"></label>
+                <input asp-for="Weather.WeatherName" class="form-control" />
+                <span asp-validation-for="Weather.WeatherName" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Weather.WeatherPic" />
+            <div class="form-group">
+                <label asp-for="Weather.WeatherPic" class="control-label"></label>
+                <input asp-for="Weather.WeatherPic" class="form-control" />
+                <span asp-validation-for="Weather.WeatherPic" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

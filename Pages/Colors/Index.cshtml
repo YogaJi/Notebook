@@ -1,0 +1,46 @@
+﻿@page
+@model NoteBook.Pages.Colors.IndexModel
+
+@{
+    ViewData["Title"] = "Colors";
+}
+<style>
+    .table td {
+        vertical-align: middle;
+    }
+</style>
+
+<h1>Colors</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Colors</th>
+            <th>Color Codes</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Color)
+        {
+            <tr>
+                <td>
+                    <div id="BGColorId" style="width:50px;height:50px;background-color:@Html.DisplayFor(modelItem => item.ColorString)"></div>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ColorString)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ColorId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ColorId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ColorId">Delete</a>
+                </td>
+            </tr>
+    
+        }
+    </tbody>
+</table>

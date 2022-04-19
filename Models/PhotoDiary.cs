@@ -15,7 +15,8 @@ namespace NoteBook.Models
         public DateTime Date { get; set; }
         public string FirstContent { get; set; }
         public string secondContent { get; set; }
-        [ForeignKey("Template")]
+        
+        public int TemplateId { get; set; }
         public Template template { get; set; }
     }
 }

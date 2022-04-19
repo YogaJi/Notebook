@@ -21,14 +21,14 @@ namespace NoteBook.Pages.Weathers
 
         public Weather Weather { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Weather = await _context.Weather.FirstOrDefaultAsync(m => m.WeatherPic == id);
+            Weather = await _context.Weather.FirstOrDefaultAsync(m => m.WeatherId == id);
 
             if (Weather == null)
             {

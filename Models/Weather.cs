@@ -8,9 +8,10 @@ namespace NoteBook.Models
 {
     public class Weather
     {
-        
-        public int WeatherId { get; set; }
+
         [Key]
+        public int WeatherId { get; set; }
+        public string WeatherName { get; set; }
         public string WeatherPic { get; set; }
 
         public ICollection<Journal> Journals { get; set; }

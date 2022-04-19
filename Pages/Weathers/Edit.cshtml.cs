@@ -23,14 +23,14 @@ namespace NoteBook.Pages.Weathers
         [BindProperty]
         public Weather Weather { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Weather = await _context.Weather.FirstOrDefaultAsync(m => m.WeatherPic == id);
+            Weather = await _context.Weather.FirstOrDefaultAsync(m => m.WeatherId == id);
 
             if (Weather == null)
             {
@@ -56,7 +56,7 @@ namespace NoteBook.Pages.Weathers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!WeatherExists(Weather.WeatherPic))
+                if (!WeatherExists(Weather.WeatherId))
                 {
                     return NotFound();
                 }
@@ -69,9 +69,9 @@ namespace NoteBook.Pages.Weathers
             return RedirectToPage("./Index");
         }
 
-        private bool WeatherExists(string id)
+        private bool WeatherExists(int id)
         {
-            return _context.Weather.Any(e => e.WeatherPic == id);
+            return _context.Weather.Any(e => e.WeatherId == id);
         }
     }
 }

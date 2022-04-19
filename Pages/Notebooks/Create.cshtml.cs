@@ -38,7 +38,7 @@ namespace NoteBook.Pages.Notebooks
             _context.Notebook.Add(Notebook);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("success");
         }
     }
 }

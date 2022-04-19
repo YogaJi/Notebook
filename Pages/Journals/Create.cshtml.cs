@@ -21,8 +21,10 @@ namespace NoteBook.Pages.Journals
 
         public IActionResult OnGet()
         {
-        ViewData["mood"] = new SelectList(_context.Mood, "MoodPic", "MoodPic");
-        ViewData["weather"] = new SelectList(_context.Weather, "WeatherPic", "WeatherPic");
+            ViewData["Colors"] = new SelectList(_context.Set<Color>(), "ColorId", "ColorString");
+            ViewData["Moods"] = new SelectList(_context.Set<Mood>(), "MoodId", "MoodPic");
+            ViewData["Notebooks"] = new SelectList(_context.Set<Notebook>(), "NotebookId", "Name");
+            ViewData["Weathers"] = new SelectList(_context.Set<Weather>(), "WeatherId", "WeatherName");
             return Page();
         }
 
@@ -39,7 +41,10 @@ namespace NoteBook.Pages.Journals
 
             _context.Journal.Add(Journal);
             await _context.SaveChangesAsync();
-
+            ViewData["Colors"] = new SelectList(_context.Set<Color>(), "ColorId", "ColorString");
+            ViewData["Moods"] = new SelectList(_context.Set<Mood>(), "MoodId", "MoodPic");
+            ViewData["Notebooks"] = new SelectList(_context.Set<Notebook>(), "NotebookId", "Name");
+            ViewData["Weathers"] = new SelectList(_context.Set<Weather>(), "WeatherId", "WeatherName");
             return RedirectToPage("./Index");
         }
     }

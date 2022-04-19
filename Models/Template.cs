@@ -10,6 +10,7 @@ namespace NoteBook.Models
     {
         [Key]
         public int TemplateId { get; set; }
-
+        public string Templates { get; set; }
+        public ICollection<PhotoDiary> PhotoDiarys { get; set; }
     }
 }

@@ -5,56 +5,83 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div id="notebookTitle">
+    <a asp-page="../NoteBookPage" asp-route-id="@Model.Journal.NotebookId" style="font-size:18px; color:cornflowerblue">Back</a>
+    <h3 id="notebookName"> @Html.DisplayFor(model => model.Journal.notebook.Name)</h3>
+    <div></div>
+</div>
+<div id="journalFrame" class="shadow-sm" style="background-color:@Html.DisplayFor(model => model.Journal.color.ColorString)">
+    <p>@Html.DisplayFor(model => model.Journal.Date)</p>
+    <hr />
+    <div id="banner">
+        <p>@Html.DisplayFor(model => model.Journal.mood.MoodPic)</p>
+        <div class="d-flex">
+            <p class="fs-4 fw-bolder" style="width: 80px; line-height: 40px;">@Html.DisplayFor(model => model.Journal.weather.WeatherName)</p>
+            <image style="width:40px;height:40px;" src="@Html.DisplayFor(model => model.Journal.weather.WeatherPic)"></image>
+        </div>
+    </div>
+    <div id="title">
+        <h4>@Html.DisplayFor(model => model.Journal.Title)</h4>
+    </div>
+    <div>
+        <p>@Html.DisplayFor(model => model.Journal.Content)</p>
+    </div>
+</div>
 
-<div>
-    <h4>Journal</h4>
+@*<div style="margin-top:10%">
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.Title)
+            @Html.DisplayNameFor(model => model.Journal.notebook)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.Title)
+            @Html.DisplayFor(model => model.Journal.notebook.Name)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Journal.mood)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Journal.mood.MoodPic)
+        </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Journal.Date)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Journal.Date)
         </dd>
+
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.BackgroundColor)
+            @Html.DisplayNameFor(model => model.Journal.weather)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.BackgroundColor)
+            @Html.DisplayFor(model => model.Journal.weather.WeatherPic)
         </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Journal.color.ColorString)
+        </dt>
+        <dd class="col-sm-10" style="width:60px;background-color:@Html.DisplayFor(model => model.Journal.color.ColorString)">
+            @Html.DisplayFor(model => model.Journal.color.ColorString)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Journal.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Journal.Title)
+        </dd>
+
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Journal.Content)
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Journal.Content)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.NotebookId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.NotebookId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.PrimaryWeather)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.PrimaryWeather.WeatherPic)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.PrimaryMood)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.PrimaryMood.MoodPic)
-        </dd>
+
     </dl>
-</div>
+</div>*@
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Journal.JournalId">Edit</a> |
     <a asp-page="./Index">Back to List</a>

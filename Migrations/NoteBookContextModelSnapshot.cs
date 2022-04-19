@@ -19,6 +19,21 @@ namespace NoteBook.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("NoteBook.Models.Color", b =>
+                {
+                    b.Property<int>("ColorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ColorString")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ColorId");
+
+                    b.ToTable("Color");
+                });
+
             modelBuilder.Entity("NoteBook.Models.Journal", b =>
                 {
                     b.Property<int>("JournalId")
@@ -26,8 +41,8 @@ namespace NoteBook.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("BackgroundColor")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ColorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
@@ -35,7 +50,7 @@ namespace NoteBook.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("Notebook")
+                    b.Property<int>("MoodId")
                         .HasColumnType("int");
 
                     b.Property<int>("NotebookId")
@@ -44,32 +59,33 @@ namespace NoteBook.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("mood")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("weather")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("WeatherId")
+                        .HasColumnType("int");
 
                     b.HasKey("JournalId");
 
-                    b.HasIndex("Notebook");
+                    b.HasIndex("ColorId");
 
-                    b.HasIndex("mood");
+                    b.HasIndex("MoodId");
 
-                    b.HasIndex("weather");
+                    b.HasIndex("NotebookId");
+
+                    b.HasIndex("WeatherId");
 
                     b.ToTable("Journal");
                 });
 
             modelBuilder.Entity("NoteBook.Models.Mood", b =>
                 {
-                    b.Property<string>("MoodPic")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("MoodId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasKey("MoodPic");
+                    b.Property<string>("MoodPic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("MoodId");
 
                     b.ToTable("Mood");
                 });
@@ -102,7 +118,7 @@ namespace NoteBook.Migrations
                     b.Property<string>("FirstContent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Template")
+                    b.Property<int>("TemplateId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -113,7 +129,7 @@ namespace NoteBook.Migrations
 
                     b.HasKey("PhotoDiaryId");
 
-                    b.HasIndex("Template");
+                    b.HasIndex("TemplateId");
 
                     b.ToTable("PhotoDiary");
                 });
@@ -125,6 +141,9 @@ namespace NoteBook.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Templates")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("TemplateId");
 
                     b.ToTable("Template");
@@ -132,45 +151,71 @@ namespace NoteBook.Migrations
 
             modelBuilder.Entity("NoteBook.Models.Weather", b =>
                 {
-                    b.Property<string>("WeatherPic")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("WeatherId")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasKey("WeatherPic");
+                    b.Property<string>("WeatherName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("WeatherPic")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("WeatherId");
 
                     b.ToTable("Weather");
                 });
 
             modelBuilder.Entity("NoteBook.Models.Journal", b =>
                 {
+                    b.HasOne("NoteBook.Models.Color", "color")
+                        .WithMany("Journals")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NoteBook.Models.Mood", "mood")
+                        .WithMany("Journals")
+                        .HasForeignKey("MoodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("NoteBook.Models.Notebook", "notebook")
                         .WithMany("Journals")
-                        .HasForeignKey("Notebook");
+                        .HasForeignKey("NotebookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("NoteBook.Models.Mood", "PrimaryMood")
+                    b.HasOne("NoteBook.Models.Weather", "weather")
                         .WithMany("Journals")
-                        .HasForeignKey("mood");
+                        .HasForeignKey("WeatherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("NoteBook.Models.Weather", "PrimaryWeather")
-                        .WithMany("Journals")
-                        .HasForeignKey("weather");
+                    b.Navigation("color");
+
+                    b.Navigation("mood");
 
                     b.Navigation("notebook");
 
-                    b.Navigation("PrimaryMood");
-
-                    b.Navigation("PrimaryWeather");
+                    b.Navigation("weather");
                 });
 
             modelBuilder.Entity("NoteBook.Models.PhotoDiary", b =>
                 {
                     b.HasOne("NoteBook.Models.Template", "template")
-                        .WithMany()
-                        .HasForeignKey("Template");
+                        .WithMany("PhotoDiarys")
+                        .HasForeignKey("TemplateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("template");
+                });
+
+            modelBuilder.Entity("NoteBook.Models.Color", b =>
+                {
+                    b.Navigation("Journals");
                 });
 
             modelBuilder.Entity("NoteBook.Models.Mood", b =>
@@ -181,6 +226,11 @@ namespace NoteBook.Migrations
             modelBuilder.Entity("NoteBook.Models.Notebook", b =>
                 {
                     b.Navigation("Journals");
+                });
+
+            modelBuilder.Entity("NoteBook.Models.Template", b =>
+                {
+                    b.Navigation("PhotoDiarys");
                 });
 
             modelBuilder.Entity("NoteBook.Models.Weather", b =>

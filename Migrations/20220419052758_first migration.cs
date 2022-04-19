@@ -8,15 +8,29 @@ namespace NoteBook.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Mood",
+                name: "Color",
                 columns: table => new
                 {
-                    MoodPic = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MoodId = table.Column<int>(type: "int", nullable: false)
+                    ColorId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ColorString = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Mood", x => x.MoodPic);
+                    table.PrimaryKey("PK_Color", x => x.ColorId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Mood",
+                columns: table => new
+                {
+                    MoodId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MoodPic = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Mood", x => x.MoodId);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,7 +51,8 @@ namespace NoteBook.Migrations
                 columns: table => new
                 {
                     TemplateId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Templates = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -48,12 +63,14 @@ namespace NoteBook.Migrations
                 name: "Weather",
                 columns: table => new
                 {
-                    WeatherPic = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     WeatherId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WeatherName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    WeatherPic = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Weather", x => x.WeatherPic);
+                    table.PrimaryKey("PK_Weather", x => x.WeatherId);
                 });
 
             migrationBuilder.CreateTable(
@@ -66,17 +83,17 @@ namespace NoteBook.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FirstContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     secondContent = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Template = table.Column<int>(type: "int", nullable: true)
+                    TemplateId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PhotoDiary", x => x.PhotoDiaryId);
                     table.ForeignKey(
-                        name: "FK_PhotoDiary_Template_Template",
-                        column: x => x.Template,
+                        name: "FK_PhotoDiary_Template_TemplateId",
+                        column: x => x.TemplateId,
                         principalTable: "Template",
                         principalColumn: "TemplateId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,55 +104,65 @@ namespace NoteBook.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    BackgroundColor = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ColorId = table.Column<int>(type: "int", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     NotebookId = table.Column<int>(type: "int", nullable: false),
-                    Notebook = table.Column<int>(type: "int", nullable: true),
-                    weather = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    mood = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    WeatherId = table.Column<int>(type: "int", nullable: false),
+                    MoodId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Journal", x => x.JournalId);
                     table.ForeignKey(
-                        name: "FK_Journal_Mood_mood",
-                        column: x => x.mood,
-                        principalTable: "Mood",
-                        principalColumn: "MoodPic",
-                        onDelete: ReferentialAction.Restrict);
+                        name: "FK_Journal_Color_ColorId",
+                        column: x => x.ColorId,
+                        principalTable: "Color",
+                        principalColumn: "ColorId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Journal_Notebook_Notebook",
-                        column: x => x.Notebook,
+                        name: "FK_Journal_Mood_MoodId",
+                        column: x => x.MoodId,
+                        principalTable: "Mood",
+                        principalColumn: "MoodId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Journal_Notebook_NotebookId",
+                        column: x => x.NotebookId,
                         principalTable: "Notebook",
                         principalColumn: "NotebookId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Journal_Weather_weather",
-                        column: x => x.weather,
+                        name: "FK_Journal_Weather_WeatherId",
+                        column: x => x.WeatherId,
                         principalTable: "Weather",
-                        principalColumn: "WeatherPic",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "WeatherId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Journal_mood",
+                name: "IX_Journal_ColorId",
                 table: "Journal",
-                column: "mood");
+                column: "ColorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Journal_Notebook",
+                name: "IX_Journal_MoodId",
                 table: "Journal",
-                column: "Notebook");
+                column: "MoodId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Journal_weather",
+                name: "IX_Journal_NotebookId",
                 table: "Journal",
-                column: "weather");
+                column: "NotebookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PhotoDiary_Template",
+                name: "IX_Journal_WeatherId",
+                table: "Journal",
+                column: "WeatherId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PhotoDiary_TemplateId",
                 table: "PhotoDiary",
-                column: "Template");
+                column: "TemplateId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -145,6 +172,9 @@ namespace NoteBook.Migrations
 
             migrationBuilder.DropTable(
                 name: "PhotoDiary");
+
+            migrationBuilder.DropTable(
+                name: "Color");
 
             migrationBuilder.DropTable(
                 name: "Mood");

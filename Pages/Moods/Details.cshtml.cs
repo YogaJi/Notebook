@@ -21,14 +21,14 @@ namespace NoteBook.Pages.Moods
 
         public Mood Mood { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string id)
+        public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Mood = await _context.Mood.FirstOrDefaultAsync(m => m.MoodPic == id);
+            Mood = await _context.Mood.FirstOrDefaultAsync(m => m.MoodId == id);
 
             if (Mood == null)
             {

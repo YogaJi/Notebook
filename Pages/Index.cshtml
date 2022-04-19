@@ -5,6 +5,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">My NoteBook</h1>
+    <p>Start your Journals.😊</p>
+    <image src="../pic/cloudy.png" style="width:60px;height:60px;"></image>
 </div>
+
+<section>
+    <div class="container">
+        <div class="row">
+            @foreach (var notebook in Model.NotebookList)
+            {
+                <div class="col notebooks">
+                    <p class="d-inline"><a class="a-underline" asp-page="NoteBookPage" asp-route-id="@notebook.NotebookId">@notebook.Name</a></p>
+                </div>
+            }
+            <div class="col notebooks">
+                <h6 class="d-inline"><a class="a-underline" asp-page="NoteBooks/Create">+ Add New</a></h6>
+            </div>
+        </div>
+    </div>
+</section>

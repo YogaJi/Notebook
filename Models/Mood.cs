@@ -8,9 +8,9 @@ namespace NoteBook.Models
 {
     public class Mood
     {
-        
-        public int MoodId { get; set; }
         [Key]
+        public int MoodId { get; set; }
+        
         public string MoodPic { get; set; }
 
         public ICollection<Journal> Journals { get; set; }

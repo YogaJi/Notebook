@@ -25,10 +25,10 @@
             @Html.DisplayFor(model => model.Journal.Date)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.BackgroundColor)
+            @Html.DisplayNameFor(model => model.Journal.color)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.BackgroundColor)
+            @Html.DisplayFor(model => model.Journal.color.ColorId)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Journal.Content)
@@ -37,22 +37,22 @@
             @Html.DisplayFor(model => model.Journal.Content)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.NotebookId)
+            @Html.DisplayNameFor(model => model.Journal.notebook)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.NotebookId)
+            @Html.DisplayFor(model => model.Journal.notebook.NotebookId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.PrimaryWeather)
+            @Html.DisplayNameFor(model => model.Journal.weather)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.PrimaryWeather.WeatherPic)
+            @Html.DisplayFor(model => model.Journal.weather.WeatherId)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.PrimaryMood)
+            @Html.DisplayNameFor(model => model.Journal.mood)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.PrimaryMood.MoodPic)
+            @Html.DisplayFor(model => model.Journal.mood.MoodId)
         </dd>
     </dl>
     

@@ -1,11 +1,13 @@
 ﻿@page
 @model NoteBook.Pages.Weathers.IndexModel
-
 @{
-    ViewData["Title"] = "Index";
+    Layout = "../Shared/_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "Weather";
 }
 
-<h1>Index</h1>
+<h1>Weather</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,23 +16,36 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Weather[0].WeatherId)
+                Icon
+            </th>
+            <th>
+                Weather
+            </th>
+            <th>
+                File
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Weather) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.WeatherId)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.WeatherPic">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.WeatherPic">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.WeatherPic">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Weather)
+        {
+            <tr>
+                <td style="vertical-align:baseline">
+                    <image class="weatherPic" src="@Html.DisplayFor(modelItem => item.WeatherPic)" style="width:60px;height:60px;"></image>
+                </td>
+                <td style="vertical-align:baseline">
+                    @Html.DisplayFor(modelItem => item.WeatherName)
+                </td>
+                <td style="vertical-align:baseline">
+                    @Html.DisplayFor(modelItem => item.WeatherPic)
+                </td>
+                <td style="vertical-align:baseline">
+                    <a asp-page="./Edit" asp-route-id="@item.WeatherId">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.WeatherId">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.WeatherId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

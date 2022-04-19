@@ -2,10 +2,10 @@
 @model NoteBook.Pages.Moods.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Moods";
 }
 
-<h1>Index</h1>
+<h1>Moods</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Mood[0].MoodId)
+                @Html.DisplayNameFor(model => model.Mood[0].MoodPic)
             </th>
             <th></th>
         </tr>
@@ -23,12 +23,12 @@
 @foreach (var item in Model.Mood) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MoodId)
+                @Html.DisplayFor(modelItem => item.MoodPic)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.MoodPic">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.MoodPic">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.MoodPic">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.MoodId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.MoodId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.MoodId">Delete</a>
             </td>
         </tr>
 }

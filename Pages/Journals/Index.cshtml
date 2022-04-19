@@ -2,10 +2,14 @@
 @model NoteBook.Pages.Journals.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "My Journals";
 }
-
-<h1>Index</h1>
+<style>
+    .table td{
+        vertical-align:middle;
+    }
+</style>
+<h1>My Journals</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,25 +18,26 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Journal[0].notebook)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Journal[0].Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Journal[0].Date)
             </th>
+            @*      <th>
+            @Html.DisplayNameFor(model => model.Journal[0].Content)
+        </th>*@
+
             <th>
-                @Html.DisplayNameFor(model => model.Journal[0].BackgroundColor)
+                @Html.DisplayNameFor(model => model.Journal[0].weather)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Journal[0].Content)
+                @Html.DisplayNameFor(model => model.Journal[0].mood)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Journal[0].NotebookId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Journal[0].PrimaryWeather)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Journal[0].PrimaryMood)
+                @Html.DisplayNameFor(model => model.Journal[0].color)
             </th>
             <th></th>
         </tr>
@@ -40,26 +45,26 @@
     <tbody>
 @foreach (var item in Model.Journal) {
         <tr>
+            <td class="font-weight-bold">
+                @Html.DisplayFor(modelItem => item.notebook.Name)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BackgroundColor)
-            </td>
-            <td>
+       @*     <td>
                 @Html.DisplayFor(modelItem => item.Content)
+            </td>*@
+            <td>
+                <image src="@Html.DisplayFor(modelItem => item.weather.WeatherPic)" style="width:40px;height:40px;"></image>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NotebookId)
+                @Html.DisplayFor(modelItem => item.mood.MoodPic)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrimaryWeather.WeatherPic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PrimaryMood.MoodPic)
+                <div class="shadow-sm" style="width:30px;height:30px;border-radius:4px;background-color:@Html.DisplayFor(modelItem => item.color.ColorString)"></div>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.JournalId">Edit</a> |

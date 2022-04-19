@@ -24,8 +24,10 @@ namespace NoteBook.Pages.Journals
         public async Task OnGetAsync()
         {
             Journal = await _context.Journal
-                .Include(j => j.PrimaryMood)
-                .Include(j => j.PrimaryWeather).ToListAsync();
+                .Include(j => j.color)
+                .Include(j => j.mood)
+                .Include(j => j.notebook)
+                .Include(j => j.weather).ToListAsync();
         }
     }
 }

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using NoteBook.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NoteBook.Data;
 
 namespace NoteBook
 {
@@ -26,8 +26,9 @@ namespace NoteBook
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
             services.AddDbContext<NoteBookContext>(options =>
-          options.UseSqlServer(Configuration.GetConnectionString("NoteBookContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("NoteBookContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

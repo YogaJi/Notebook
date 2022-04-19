@@ -13,12 +13,12 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Mood.MoodId" />
             <div class="form-group">
-                <label asp-for="Mood.MoodId" class="control-label"></label>
-                <input asp-for="Mood.MoodId" class="form-control" />
-                <span asp-validation-for="Mood.MoodId" class="text-danger"></span>
+                <label asp-for="Mood.MoodPic" class="control-label"></label>
+                <input asp-for="Mood.MoodPic" class="form-control" />
+                <span asp-validation-for="Mood.MoodPic" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Mood.MoodPic" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

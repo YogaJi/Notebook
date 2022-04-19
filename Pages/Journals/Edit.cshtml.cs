@@ -31,15 +31,19 @@ namespace NoteBook.Pages.Journals
             }
 
             Journal = await _context.Journal
-                .Include(j => j.PrimaryMood)
-                .Include(j => j.PrimaryWeather).FirstOrDefaultAsync(m => m.JournalId == id);
+                .Include(j => j.color)
+                .Include(j => j.mood)
+                .Include(j => j.notebook)
+                .Include(j => j.weather).FirstOrDefaultAsync(m => m.JournalId == id);
 
             if (Journal == null)
             {
                 return NotFound();
             }
-           ViewData["mood"] = new SelectList(_context.Mood, "MoodPic", "MoodPic");
-           ViewData["weather"] = new SelectList(_context.Weather, "WeatherPic", "WeatherPic");
+           ViewData["ColorId"] = new SelectList(_context.Set<Color>(), "ColorId", "ColorString");
+           ViewData["MoodId"] = new SelectList(_context.Set<Mood>(), "MoodId", "MoodPic");
+           ViewData["NotebookId"] = new SelectList(_context.Set<Notebook>(), "NotebookId", "Name");
+           ViewData["WeatherId"] = new SelectList(_context.Set<Weather>(), "WeatherId", "WeatherPic");
             return Page();
         }
 
