@@ -39,7 +39,7 @@ namespace NoteBook.Controllers
                     //Storing the response details recieved from web api   
                     var Response = Res.Content.ReadAsStringAsync().Result;
 
-                    //Deserializing the response recieved from web api and storing into the Employee list  
+                    //Deserializing the response recieved from web api and storing into the list  
                     Greets = JsonConvert.DeserializeObject<List<Greeting>>(Response);
 
                 }

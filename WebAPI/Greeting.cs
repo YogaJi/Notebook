@@ -7,6 +7,7 @@ namespace WebAPI
 {
     public class Greeting
     {
+        public int ContentId { get; set; }
         public string Content { get; set; }
     }
 }
