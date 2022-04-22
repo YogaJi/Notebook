@@ -27,5 +27,7 @@ namespace NoteBook.Data
         public DbSet<NoteBook.Models.PhotoDiary> PhotoDiary { get; set; }
 
         public DbSet<NoteBook.Models.Template> Template { get; set; }
+
+        public DbSet<NoteBook.Models.Greeting> Greeting { get; set; }
     }
 }

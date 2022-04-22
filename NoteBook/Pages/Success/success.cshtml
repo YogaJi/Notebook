@@ -1,5 +1,5 @@
 ﻿@page
-@model NoteBook.Pages.Notebooks.CreateModel
+@model NoteBook.Models.Greeting
 @{
     Layout = "../Shared/headerOnly.cshtml";
 }
@@ -24,16 +24,18 @@
             
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group form-notebook-frame">
-                    <p style="font-size: 20px;font-style: oblique; color: darkslateblue ">ssdjfklasjgklwjelgkjwelkgjlwkjgalkwejglkwjeklj</p>
+
+                    <p style="font-size: 20px;font-style: oblique; color: darkslateblue">
+                        @Html.DisplayFor(model => model.Content)
+                    </p>
+
                 </div>
                 <div class="form-group form-create-div">
                     <button value="Confirm" style="font-size: 18px; color: cornflowerblue; font-style: oblique; width: 80px; height: 40px; border: none; background-color: transparent " class="btn btn-light font-weight-bolder" onclick="window.location.href ='../Index'">Confirm</button>
                 </div>
             
         </div>
-   @*     <div style="margin-top: 30%;">
-            <a asp-page="Index">Back to List</a>
-        </div>*@
+ 
     </div>
 </div>
 

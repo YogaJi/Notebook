@@ -38,7 +38,8 @@ namespace NoteBook.Pages.Notebooks
             _context.Notebook.Add(Notebook);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("success");
+            return Redirect("../Success/success");
+            //return RedirectToPage("../success");
         }
     }
 }
