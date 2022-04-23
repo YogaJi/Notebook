@@ -4,6 +4,13 @@
 .a-underline{
     display:inline-block;
 }
+
+thead th {
+    color: grey;
+}
+table td {
+    color: darkslateblue;
+}
 /*weather pic*/
 #weatherIcon{
     width:60px;
@@ -26,6 +33,7 @@
     flex-grow:1;
     flex-basis:0;
 }
+
 .notebooks a{
     color:darkslategrey;
     font-weight:600;
@@ -107,6 +115,19 @@
     margin:4% 0%;
     padding: 4%;
 }
+
+#journalFrame title {
+    color: darkslategrey;
+}
+
+#journalFrame content {
+    color: darkslategrey;
+}
+
+#journalFrame underbanner a {
+    color: lightslategray;
+}
+
 a:hover{
     text-decoration:none;
 }
@@ -124,6 +145,11 @@ a:hover{
 }
 /*Journal create page*/
 
+.form-control:focus {
+    border-color: #fff;
+    webkit-box-shadow: none;
+    box-shadow: none;
+}
 .form-display {
     display: flex;
     align-items: baseline;
@@ -141,6 +167,12 @@ a:hover{
 .btn-save{
     background-color:transparent;
 }
+
+.btn-save:hover {
+    background-color:lightgrey;
+    color: gold;
+}
+
 .select-no-border, .input-no-shadow {
     border: none;
     /*box-shadow: 0px 0px 10px 0px rgb(127,127,127,0.1);*/
@@ -263,4 +295,25 @@ a:hover{
     text-decoration-line: underline;
     font-style: oblique;
     font-size: 20px;
+}
+
+/*Notebook page datalist view*/
+.booklist li {
+    list-style-type: none;
+    font-size:22px;
+}
+.booklist ul {
+    text-align: center;
+}
+.booklist li {
+    color: goldenrod;
+}
+.booklist a {
+    color: cornflowerblue;
+}
+.booklist a:first-child {
+    color: deepskyblue;
+}
+.booklist a:first-child:hover {
+    color: gold;
 }

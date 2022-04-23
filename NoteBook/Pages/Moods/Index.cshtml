@@ -5,7 +5,7 @@
     ViewData["Title"] = "Moods";
 }
 
-<h1>Moods</h1>
+<h1 style="color: cornflowerblue">Moods</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -22,7 +22,7 @@
     <tbody>
 @foreach (var item in Model.Mood) {
         <tr>
-            <td>
+            <td style="font-size: 28px;">
                 @Html.DisplayFor(modelItem => item.MoodPic)
             </td>
             <td>

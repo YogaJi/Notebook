@@ -23,10 +23,10 @@
     <div id="title">
         <h4>@Html.DisplayFor(model => model.Journal.Title)</h4>
     </div>
-    <div>
+    <div id="content">
         <p>@Html.DisplayFor(model => model.Journal.Content)</p>
     </div>
-    <div>
+    <div id="underbanner">
         <a asp-page="./Edit" asp-route-id="@Model.Journal.JournalId">Edit</a> |
         <a asp-page="./Index">Back to List</a>
     </div>
