@@ -3,28 +3,19 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Edge;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
+using WebAPI.Controllers;
 
 namespace Intergration_test
 {
     [TestClass]
-    class APITest
+    public class APITest
     {
-        private IWebDriver _webDriver;
+        private readonly GreetingController _GreetingController;
 
-        [TestInitialize]
-        public void SetUp()
+/*        public APITest()
         {
-            new DriverManager().SetUpDriver(new EdgeConfig());
-            _webDriver = new EdgeDriver();
-        }
+            _GreetingController = new GreetingController();
+        }*/
 
-
-
-
-        [TestCleanup]
-        public void TearDown()
-        {
-            _webDriver.Quit();
-        }
     }
 }

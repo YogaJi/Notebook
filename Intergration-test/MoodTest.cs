@@ -31,30 +31,38 @@ namespace Intergration_test
         {
             _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Create");
             var input = _webDriver.FindElement(By.Id("Mood_MoodPic"));
-            input.SendKeys("Angry");
+            input.SendKeys("😮");
             input.Submit();
-            Assert.IsTrue(_webDriver.PageSource.Contains("Angry"));
+            Assert.IsTrue(_webDriver.PageSource.Contains("😮"));
+        }
+        
+        [TestMethod]
+        public void Test_Detail_Mood()
+        {
+            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods");
+            _webDriver.FindElement(By.PartialLinkText("Detail :first-child")).Click();
+            var input = _webDriver.FindElement(By.Id("Mood_MoodPic"));
+            Assert.AreEqual(input, "😅");
         }
 
         [TestMethod]
         public void Test_Delete_Mood()
         {
-
-            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Delete?id=29");
+            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Delete?id=2");
             _webDriver.FindElement(By.ClassName("btn-danger")).Click();
             _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods");
-            Assert.IsFalse(_webDriver.PageSource.Contains("Good"));
+            Assert.IsFalse(_webDriver.PageSource.Contains("🤨"));
         }
 
         [TestMethod]
         public void Test_Edit_Mood()
         {
-            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Edit?id=3");
+            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Edit?id=2");
             var input = _webDriver.FindElement(By.Id("Mood_MoodPic"));
-            input.SendKeys("BetterMood");
+            input.SendKeys("🥴");
             input.Submit();
             _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods");
-            Assert.IsTrue(_webDriver.PageSource.Contains("BetterMood"));
+            Assert.IsTrue(_webDriver.PageSource.Contains("🥴"));
         }
 
 
