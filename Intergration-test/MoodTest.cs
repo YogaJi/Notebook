@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 namespace Intergration_test
 {
     [TestClass]
-    class MoodTest
+    public class MoodTest
     {
         private IWebDriver _webDriver;
 
@@ -44,16 +44,6 @@ namespace Intergration_test
             var input = _webDriver.FindElement(By.Id("Mood_MoodPic"));
             Assert.AreEqual(input, "😅");
         }
-
-        [TestMethod]
-        public void Test_Delete_Mood()
-        {
-            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Delete?id=2");
-            _webDriver.FindElement(By.ClassName("btn-danger")).Click();
-            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods");
-            Assert.IsFalse(_webDriver.PageSource.Contains("🤨"));
-        }
-
         [TestMethod]
         public void Test_Edit_Mood()
         {
@@ -63,6 +53,15 @@ namespace Intergration_test
             input.Submit();
             _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods");
             Assert.IsTrue(_webDriver.PageSource.Contains("🥴"));
+        }
+
+        [TestMethod]
+        public void Test_Delete_Mood()
+        {
+            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods/Delete?id=2");
+            _webDriver.FindElement(By.ClassName("btn-danger")).Click();
+            _webDriver.Navigate().GoToUrl("https://localhost:5001/Moods");
+            Assert.IsFalse(_webDriver.PageSource.Contains("🤨"));
         }
 
 

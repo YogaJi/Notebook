@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 namespace Intergration_test
 {
     [TestClass]
-    class WeatherTest
+    public class WeatherTest
     {
         private IWebDriver _webDriver;
 

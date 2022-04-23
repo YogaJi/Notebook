@@ -31,7 +31,7 @@ namespace Intergration_test
         public void Test_Click_NoteBook_List_Nav()
         {
             _webDriver.Navigate().GoToUrl("https://localhost:5001/NoteBooks");
-            var input = _webDriver.FindElement(By.TagName("a:nth-child(11)"));
+            var input = _webDriver.FindElement(By.TagName("a :nth-child(4)"));
             input.Click();
             Assert.IsTrue(_webDriver.PageSource.Contains("Edit"));
         }

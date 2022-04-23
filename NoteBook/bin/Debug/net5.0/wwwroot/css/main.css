@@ -1,0 +1,266 @@
+﻿p{
+    font-size:18px;
+}
+.a-underline{
+    display:inline-block;
+}
+/*weather pic*/
+#weatherIcon{
+    width:60px;
+    height:60px;
+}
+
+.notebooks {
+    height: 160px;
+    margin: 2%;
+    background-color: ghostwhite;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    /*line-height: 120px;*/
+    vertical-align: central;
+    border: 1px solid lightblue;
+    border-radius: 2px 8px 8px 2px;
+    font-size: 16px;
+    padding-top: 6%;
+    flex-grow:1;
+    flex-basis:0;
+}
+.notebooks a{
+    color:darkslategrey;
+    font-weight:600;
+}
+@media (min-width: 576px) {
+    .notebooks {
+        background-color: yellowgreen;
+        margin:2% 6%;
+    }
+}
+
+@media (min-width: 768px) {
+    .notebooks {
+        height: 160px;
+        margin: 2%;
+        background-color: ghostwhite;
+        
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        /*line-height: 120px;*/
+        vertical-align: central;
+        border: 1px solid lightblue;
+        border-radius: 2px 8px 8px 2px;
+        font-size: 16px;
+        padding-top: 6%;
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+    .notebooks a{
+        color:dimgray;
+    }
+ 
+}
+
+
+@media (min-width: 992px) {
+    .notebooks {
+        background-color: lightpink;
+        padding-top:4%;
+    }
+    .notebooks a{
+        color:white;
+    }
+
+}
+
+
+@media (min-width: 1200px) {
+    .notebooks {
+        background-color: mediumpurple;
+        height: 200px;
+    }
+    .notebooks a {
+        color: white;
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
+
+@media (min-width: 1400px) {
+    .notebooks {
+        background-color: darkslategrey;
+        height:200px;
+    }
+}
+#notebookTitle {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 8px 0px 8px;
+}
+#notebookName{
+    /*detail secret*/
+}
+#journalFrame {
+    /*background-color:aliceblue;*/
+    border-radius: 6px;
+    margin:4% 0%;
+    padding: 4%;
+}
+a:hover{
+    text-decoration:none;
+}
+#banner{
+    display:flex;
+    justify-content:space-between;
+}
+#banner p{
+    font-size:medium;
+}
+#title {
+    display: flex;
+    align-items:center;
+    margin:4% 0%;
+}
+/*Journal create page*/
+
+.form-display {
+    display: flex;
+    align-items: baseline;
+}
+.form-itemBanner{
+    background-color:white;
+}
+.create-journal {
+    width: 100%;
+}
+#noteSelected {
+    margin-left: 10%;
+
+}
+.btn-save{
+    background-color:transparent;
+}
+.select-no-border, .input-no-shadow {
+    border: none;
+    /*box-shadow: 0px 0px 10px 0px rgb(127,127,127,0.1);*/
+}
+
+.select-no-border:focus {
+    outline: none;
+}
+*:focus {
+    outline: none;
+}
+.form-mood-weather{
+  justify-content:space-between;
+}
+.form-mood-weather :nth-child(3) {
+    /*margin-right: 48%;*/
+    width:150px;
+}
+.form-mood-weather :first-child {
+    margin-right: 10%;
+    width:80px;
+}
+#SelectWeatherIcon {
+    width: 100px;
+    margin-left: 2%;
+}
+.form-display label{
+    margin-right:8%;
+    margin-left:1%;
+}
+.form-bg {
+    margin-left: 84%;
+    margin-bottom: -0.1rem;
+}
+.label-BG-Title{
+    font-size:18px;
+}
+.form-title-content {
+    background-color: white;
+    border: 1px solid lightblue;
+    padding: 2%;
+    margin-top:2%;
+}
+
+.form-title-content input{
+    border: none;
+}
+
+.form-title-content input {
+    border: none;
+}
+.form-title-content textarea {
+    border: none;
+    padding:2%;
+    font-size:18px;
+}
+.form-group.form-title-content :nth-child(2) {
+    margin-top: 2%;
+}
+.form-title-content input {
+    font-size:20px;
+}
+.form-title-line {
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: aliceblue;
+}
+.underline {
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: lightblue;
+}
+.form-title-content textarea {
+    height: 200px;
+    outline-color:none;
+}
+.form-title-content input {
+    height: 40px;
+}
+/*note & pic*/
+.form-notes-pic {
+    display: flex;
+    justify-content: space-between;
+}
+.notes {
+    background-color:lightyellow;
+}
+.form-notes {
+    width: 48%;
+    padding:4%;
+    border:none;
+}
+.form-pic {
+    width: 48%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+/*create notebook*/
+.input-notebook {
+    margin: 10% 0% 8% 20%;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: lightblue;
+    width: 60%;
+}
+.form-notebook-frame {
+    /*display: flex;*/
+}
+.form-create-div {
+    justify-content: end;
+    display:flex;
+}
+.form-create-btn {
+    background: transparent;
+    color: cornflowerblue;
+    border: none;
+    text-decoration-line: underline;
+    font-style: oblique;
+    font-size: 20px;
+}

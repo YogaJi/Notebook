@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 namespace Intergration_test
 {
     [TestClass]
-    class JournalTest
+    public class JournalTest
     {
         private IWebDriver _webDriver;
 

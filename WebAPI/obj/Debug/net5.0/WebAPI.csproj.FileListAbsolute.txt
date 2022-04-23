@@ -39,7 +39,6 @@ C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\bin\Debug\net5.0\Microsoft.O
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.csproj.AssemblyReference.cache
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.AssemblyInfoInputs.cache
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.AssemblyInfo.cs
@@ -54,3 +53,4 @@ C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.dll
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\ref\WebAPI.dll
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.pdb
 C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.genruntimeconfig.cache
+C:\Users\DELL\source\repos\NoteBook\NoteBook\WebAPI\obj\Debug\net5.0\WebAPI.csproj.AssemblyReference.cache

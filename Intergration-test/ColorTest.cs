@@ -7,7 +7,7 @@ using WebDriverManager.DriverConfigs.Impl;
 namespace Intergration_test
 {
     [TestClass]
-    class ColorTest
+    public class ColorTest
     {
         private IWebDriver _webDriver;
 
