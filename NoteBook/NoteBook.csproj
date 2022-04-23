@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\Views\" />
+    <Folder Include="Pages\新文件夹\" />
   </ItemGroup>
 
 </Project>

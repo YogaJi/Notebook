@@ -61,12 +61,11 @@
                         <input asp-for="Journal.Title" class="form-control fs-2" />
                         <span asp-validation-for="Journal.Title" class="text-danger"></span>
                     </div>
-                    @*<label asp-for="Journal.Content" class="control-label"></label>*@
                     <textarea asp-for="Journal.Content" class="form-control fs-5" /></textarea>
                     <span asp-validation-for="Journal.Content" class="text-danger"></span>
                 </div>
                 <div class="form-notes-pic" style="width:100%">
-                    <textarea class="form-notes form-control fs-5 notes" style="background-color:lightyellow"></textarea>
+                    <textarea asp-for="Journal.Note" class="form-notes form-control fs-5 notes" style="background-color:lightyellow"></textarea>
                     <div class="form-pic"><img src="..." class="rounded float-end" alt="..."></div>
                 </div>
                 <div>

@@ -11,10 +11,10 @@
     <div></div>
 </div>
 <div id="journalFrame" class="shadow-sm" style="background-color:@Html.DisplayFor(model => model.Journal.color.ColorString)">
-    <p>@Html.DisplayFor(model => model.Journal.Date)</p>
+    <p style="color: lightslategray;">@Html.DisplayFor(model => model.Journal.Date)</p>
     <hr />
     <div id="banner">
-        <p>@Html.DisplayFor(model => model.Journal.mood.MoodPic)</p>
+        <p style="font-size: 28px">@Html.DisplayFor(model => model.Journal.mood.MoodPic)</p>
         <div class="d-flex">
             <p class="fs-4 fw-bolder" style="width: 80px; line-height: 40px;">@Html.DisplayFor(model => model.Journal.weather.WeatherName)</p>
             <image style="width:40px;height:40px;" src="@Html.DisplayFor(model => model.Journal.weather.WeatherPic)"></image>
@@ -26,63 +26,20 @@
     <div id="content">
         <p>@Html.DisplayFor(model => model.Journal.Content)</p>
     </div>
+
+
+    @if(@Model.Journal.Note != null){
+       
+        <div class="form-notes-pic" style="width: 100%; margin-top: 8%">
+            <p class="fs-5 notes form-notes rounded shadow-sm" style="background-color:lightyellow">@Html.DisplayFor(model => model.Journal.Note)</p>
+            <div class="form-pic" style="background-color:transparent">@*<img src="..." class="rounded float-end" alt="...">*@</div>
+        </div>
+
+     }
+
+
     <div id="underbanner">
         <a asp-page="./Edit" asp-route-id="@Model.Journal.JournalId">Edit</a> |
         <a asp-page="./Index">Back to List</a>
     </div>
 </div>
-
-@*<div style="margin-top:10%">
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.notebook)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.notebook.Name)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.mood)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.mood.MoodPic)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.Date)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.Date)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.weather)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.weather.WeatherPic)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.color.ColorString)
-        </dt>
-        <dd class="col-sm-10" style="width:60px;background-color:@Html.DisplayFor(model => model.Journal.color.ColorString)">
-            @Html.DisplayFor(model => model.Journal.color.ColorString)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.Title)
-        </dd>
-
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Journal.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Journal.Content)
-        </dd>
-
-    </dl>
-</div>*@

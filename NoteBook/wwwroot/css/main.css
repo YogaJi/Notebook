@@ -4,6 +4,9 @@
 .a-underline{
     display:inline-block;
 }
+a:hover{
+    color:goldenrod;
+}
 
 thead th {
     color: grey;
@@ -108,6 +111,7 @@ table td {
 }
 #notebookName{
     /*detail secret*/
+    color:gray;
 }
 #journalFrame {
     /*background-color:aliceblue;*/
@@ -122,9 +126,10 @@ table td {
 
 #journalFrame content {
     color: darkslategrey;
+    margin-bottom: 10%;
 }
 
-#journalFrame underbanner a {
+#underbanner a {
     color: lightslategray;
 }
 
@@ -262,8 +267,10 @@ a:hover{
 }
 .form-notes {
     width: 48%;
-    padding:4%;
-    border:none;
+    padding: 4%;
+    border: none;
+    color: chocolate;
+    font-size:20px;
 }
 .form-pic {
     width: 48%;

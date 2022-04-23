@@ -24,10 +24,12 @@ namespace NoteBook.Models
 
         public string Content { get; set; }
 
+        [StringLength(128,MinimumLength = 8)]
+        public string Note { get; set; }
+
         public int NotebookId { get; set; }
 
         public Notebook notebook { get; set; }
-
 
         public int WeatherId { get; set; }
         public Weather weather { get; set; }
