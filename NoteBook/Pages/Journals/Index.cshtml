@@ -28,10 +28,10 @@
             </th>
            
             <th>
-                @Html.DisplayNameFor(model => model.Journal[0].weather)
+                @Html.DisplayNameFor(model => model.Journal[0].mood)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Journal[0].mood)
+                @Html.DisplayNameFor(model => model.Journal[0].weather)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Journal[0].color)
@@ -52,10 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                <image src="@Html.DisplayFor(modelItem => item.weather.WeatherPic)" style="width:40px;height:40px;"></image>
+                @Html.DisplayFor(modelItem => item.mood.MoodPic)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.mood.MoodPic)
+                <image src="@Html.DisplayFor(modelItem => item.weather.WeatherPic)" style="width:40px;height:40px;"></image>
             </td>
             <td>
                 <div class="shadow-sm" style="width:30px;height:30px;border-radius:4px;background-color:@Html.DisplayFor(modelItem => item.color.ColorString)"></div>
