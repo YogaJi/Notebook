@@ -15,12 +15,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Weather.WeatherName" class="control-label"></label>
-                <input asp-for="Weather.WeatherName" class="form-control" />
+                <input asp-for="Weather.WeatherName" placeholder="Sunny" class="form-control" />
                 <span asp-validation-for="Weather.WeatherName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Weather.WeatherPic" class="control-label"></label>
-                <input asp-for="Weather.WeatherPic" class="form-control" />
+                <input asp-for="Weather.WeatherPic" placeholder="../pic/sunny.png" class="form-control" />
                 <span asp-validation-for="Weather.WeatherPic" class="text-danger"></span>
             </div>
             <div class="form-group">

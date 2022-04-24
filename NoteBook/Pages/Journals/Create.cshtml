@@ -63,10 +63,15 @@
                     </div>
                     <textarea asp-for="Journal.Content" class="form-control fs-5" /></textarea>
                     <span asp-validation-for="Journal.Content" class="text-danger"></span>
+
+                    <div class="form-group form-add-nopic">
+                        <a id="show-note" onclick="clickToShowNote()"><image src="../pic/note.png" style="width: 36px; height: 36px"></image></a>
+                        <a id="show-pic" onclick="clickToShowPic()"><image src="../pic/pic.png" style="width: 36px; height: 36px;"></image></a>
+                    </div>
                 </div>
                 <div class="form-notes-pic" style="width:100%">
-                    <textarea asp-for="Journal.Note" class="form-notes form-control fs-5 notes" style="background-color:lightyellow"></textarea>
-                    <div class="form-pic"><img src="..." class="rounded float-end" alt="..."></div>
+                    <textarea id="note" asp-for="Journal.Note" class="form-notes form-control fs-5 notes" style="display:none;background-color:lightyellow"></textarea>
+                    <div id="pic" class="form-pic" style="display:none" ><img src="..." class="rounded float-end" alt="..." ></div>
                 </div>
                 <div>
                     <a asp-page="Index">Back to List</a>
@@ -116,4 +121,24 @@
         console.log(ads);
         weatherImage.src = ads;
     }
+
+    //click to show notes and pics
+    var note = document.getElementById("note");
+    var pic = document.getElementById("pic");
+
+    function clickToShowNote() {
+        if (note.style.display !== "none") {
+            note.style.display = "none"
+        } else {
+            note.style.display = "block";
+        }     
+    }
+    function clickToShowPic() {
+        if (pic.style.display !== "none") {
+            pic.style.display = "none"
+        } else {
+            pic.style.display = "block";
+        }
+    }
+
 </script>

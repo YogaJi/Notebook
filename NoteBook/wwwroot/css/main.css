@@ -290,6 +290,23 @@ a:hover{
 .form-title-content input {
     height: 40px;
 }
+.form-add-nopic {
+    display: block;
+    text-align: end;
+    margin-right:2%
+}
+#show-note #show-pic #note #pic {
+    transition: opacity all 0.4s ease;
+}
+
+#show-pic :hover {
+    transform: scale(1.1);
+}
+#show-note :hover {
+    transform: scale(1.1);
+}
+
+
 /*note & pic*/
 .form-notes-pic {
     display: flex;
